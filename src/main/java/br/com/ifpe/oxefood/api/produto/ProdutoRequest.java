@@ -1,4 +1,4 @@
-package br.com.ifpe.oxefood.api.cliente;
+package br.com.ifpe.oxefood.api.produto;
 
 import java.time.LocalDate;
 
@@ -10,13 +10,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClienteRequest {
-
-   private String nome;
+public class ProdutoRequest {
+       private String nome;
 
    @JsonFormat(pattern = "dd/MM/yyyy")
    private LocalDate dataNascimento;
@@ -37,5 +37,4 @@ public class ClienteRequest {
            .foneFixo(foneFixo)
            .build();
    }
-
 }
