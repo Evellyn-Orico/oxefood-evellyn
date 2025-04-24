@@ -1,5 +1,7 @@
 package br.com.ifpe.oxefood.modelo.entregador;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,17 @@ public class EntregadorService {
        entregador.setHabilitado(Boolean.TRUE);
        return repository.save(entregador);
     }
+
+        public List<Entregador> listarTodos() {   //faz parte da consulta de todos os entregadores cadastrados (entregadorController)
+
+        return repository.findAll();
+    }
+
+    public Entregador obterPorID(Long id) {  //faz parte da consulta por id os entregadores cadastrados (entregadorController)
+
+        return repository.findById(id).get();
+    }
+
 
     
 }
