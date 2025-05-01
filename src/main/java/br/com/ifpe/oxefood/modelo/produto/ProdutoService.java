@@ -16,12 +16,11 @@ public class ProdutoService {
     @Transactional
     public Produto save(Produto produto) {
 
-       produto.setHabilitado(Boolean.TRUE);
-       return repository.save(produto);
+        produto.setHabilitado(Boolean.TRUE);
+        return repository.save(produto);
     }
 
-
-        public List<Produto> listarTodos() {   //faz parte da consulta de todos os produtos cadastrados (produtoController)
+    public List<Produto> listarTodos() {   //faz parte da consulta de todos os produtos cadastrados (produtoController)
 
         return repository.findAll();
     }
@@ -31,6 +30,28 @@ public class ProdutoService {
         return repository.findById(id).get();
     }
 
+    @Transactional
+    public void update(Long id, Produto produtoAlterado) {  // Implementando a Alteração (produtoCntroller.java e produtoService
+
+        Produto produto = repository.findById(id).get();
+        produto.setCodigo(produtoAlterado.getCodigo());
+        produto.setTitulo(produtoAlterado.getTitulo());
+        produto.setDescricao(produtoAlterado.getDescricao());
+        produto.setValorUnitario(produtoAlterado.getValorUnitario());
+        produto.setTempoEntregaMinimo(produtoAlterado.getTempoEntregaMinimo());
+        produto.setTempoEntregaMaximo(produtoAlterado.getTempoEntregaMaximo());
+
+        repository.save(produto);
+    }
 
     
+    @Transactional      // deletar/remover 
+    public void delete(Long id) {
+
+        Produto produto = repository.findById(id).get();
+        produto.setHabilitado(Boolean.FALSE);
+
+        repository.save(produto);
+    }
+
 }
