@@ -18,16 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.ifpe.oxefood.modelo.cliente.Cliente;
 import br.com.ifpe.oxefood.modelo.cliente.ClienteService;
 
-@RestController
-@RequestMapping("/api/cliente")
-@CrossOrigin
+@RestController //Faz a classe ser um controller
+@RequestMapping("/api/cliente") 
+@CrossOrigin  //Utilizada para o controller receber requisições do React
 
 public class ClienteController {
 
-    @Autowired
+    @Autowired  //Instanciar no cliente service
     private ClienteService clienteService;
 
-    @PostMapping
+    @PostMapping  //Especificar que essa função vai receber requisições do tipo Post
     public ResponseEntity<Cliente> save(@RequestBody ClienteRequest request) {
 
         Cliente cliente = clienteService.save(request.build());

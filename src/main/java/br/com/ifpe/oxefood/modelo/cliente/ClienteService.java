@@ -7,14 +7,15 @@ import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
 
-@Service
+@Service   //Faz a classe ser um serviço
 public class ClienteService {
 
-    @Autowired
+    @Autowired   //Instanciar um objeto de forma que eu possar usar os metodos e atributos dessa classe
     private ClienteRepository repository;
 
-    @Transactional
-    public Cliente save(Cliente cliente) {
+    @Transactional   //Se um falhar as outras seram desfeitas e não seram gravadas no banco 
+    public Cliente save(Cliente cliente) {  //Recebe o objeto cliente que ele vai salvar no banco
+
 
         cliente.setHabilitado(Boolean.TRUE);
         return repository.save(cliente);
@@ -33,14 +34,14 @@ public class ClienteService {
     @Transactional
     public void update(Long id, Cliente clienteAlterado) {  // Implementando a Alteração (clienteCntroller.java e clienteService)
 
-        Cliente cliente = repository.findById(id).get();
+        Cliente cliente = repository.findById(id).get();   //Consultar no banco o cliente
         cliente.setNome(clienteAlterado.getNome());
         cliente.setDataNascimento(clienteAlterado.getDataNascimento());
         cliente.setCpf(clienteAlterado.getCpf());
         cliente.setFoneCelular(clienteAlterado.getFoneCelular());
         cliente.setFoneFixo(clienteAlterado.getFoneFixo());
 
-        repository.save(cliente);
+        repository.save(cliente);  //Função para cadastra e alterar objeto
     }
 
     @Transactional      // deletar/remover 
@@ -49,7 +50,7 @@ public class ClienteService {
         Cliente cliente = repository.findById(id).get();
         cliente.setHabilitado(Boolean.FALSE);
 
-        repository.save(cliente);
+        repository.save(cliente);   //Na verdade está sendo alterado se realmente fosse deletado em vez de save seria o delete
     }
 
 }

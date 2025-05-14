@@ -17,36 +17,23 @@ import lombok.NoArgsConstructor;
 public class EntregadorRequest {
 
     private String nome;
-
     private String cpf;
-
     private String rg;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
 
     private String foneCelular;
-
     private String foneFixo;
-
-    private int qtdEntregasRealizadas;
-
-    private double valorFrete;
-
+    private Integer qtdEntregasRealizadas;
+    private Double valorFrete;
     private String enderecoRua;
-
     private String enderecoComplemento;
-
     private String enderecoNumero;
-
     private String enderecoBairro;
-
     private String enderecoCidade;
-
     private String enderecoCep;
-
     private String enderecoUf;
-
     private boolean ativo;
 
     public Entregador build() {

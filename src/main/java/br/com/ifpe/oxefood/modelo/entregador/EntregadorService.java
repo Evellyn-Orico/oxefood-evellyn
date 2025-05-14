@@ -31,25 +31,25 @@ public class EntregadorService {
     }
 
     @Transactional
-    public void update(Long id, Entregador clienteAlterado) {  // Implementando a Alteração (Cntroller.java e Service)
+    public void update(Long id, Entregador entregadorAlterado) {  // Implementando a Alteração (Cntroller.java e Service)
 
         Entregador entregador = repository.findById(id).get();
-        entregador.setNome(clienteAlterado.getNome());
-        entregador.setCpf(clienteAlterado.getCpf());
-        entregador.setRg(clienteAlterado.getRg());
-        entregador.setDataNascimento(clienteAlterado.getDataNascimento());
-        entregador.setFoneCelular(clienteAlterado.getFoneCelular());
-        entregador.setFoneFixo(clienteAlterado.getFoneFixo());
-        entregador.setQtdEntregasRealizadas(clienteAlterado.getQtdEntregasRealizadas());
-        entregador.setValorFrete(clienteAlterado.getValorFrete());
-        entregador.setEnderecoRua(clienteAlterado.getEnderecoRua());
-        entregador.setEnderecoComplemento(clienteAlterado.getEnderecoComplemento());
-        entregador.setEnderecoNumero(clienteAlterado.getEnderecoNumero());
-        entregador.setEnderecoBairro(clienteAlterado.getEnderecoBairro());
-        entregador.setEnderecoCidade(clienteAlterado.getEnderecoCidade());
+        entregador.setNome(entregadorAlterado.getNome());
+        entregador.setCpf(entregadorAlterado.getCpf());
+        entregador.setRg(entregadorAlterado.getRg());
+        entregador.setDataNascimento(entregadorAlterado.getDataNascimento());
+        entregador.setFoneCelular(entregadorAlterado.getFoneCelular());
+        entregador.setFoneFixo(entregadorAlterado.getFoneFixo());
+        entregador.setQtdEntregasRealizadas(entregadorAlterado.getQtdEntregasRealizadas());
+        entregador.setValorFrete(entregadorAlterado.getValorFrete());
+        entregador.setEnderecoRua(entregadorAlterado.getEnderecoRua());
+        entregador.setEnderecoComplemento(entregadorAlterado.getEnderecoComplemento());
+        entregador.setEnderecoNumero(entregadorAlterado.getEnderecoNumero());
+        entregador.setEnderecoBairro(entregadorAlterado.getEnderecoBairro());
+        entregador.setEnderecoCidade(entregadorAlterado.getEnderecoCidade());
 
-        entregador.setEnderecoCep(clienteAlterado.getEnderecoCep());
-        entregador.setEnderecoUf(clienteAlterado.getEnderecoUf());
+        entregador.setEnderecoCep(entregadorAlterado.getEnderecoCep());
+        entregador.setEnderecoUf(entregadorAlterado.getEnderecoUf());
 
         repository.save(entregador);
     }

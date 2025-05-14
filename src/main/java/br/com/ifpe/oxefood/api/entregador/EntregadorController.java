@@ -18,16 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.ifpe.oxefood.modelo.entregador.Entregador;
 import br.com.ifpe.oxefood.modelo.entregador.EntregadorService;
 
-@RestController
+@RestController  //Faz a classe ser um controller
 @RequestMapping("/api/entregador")
-@CrossOrigin
+@CrossOrigin  //Utilizada para o controller receber requisições do React
 
 public class EntregadorController {
 
     @Autowired
     private EntregadorService entregadorService;
 
-    @PostMapping
+    @PostMapping  //Especificar que essa função vai receber requisições do tipo Post
     public ResponseEntity<Entregador> save(@RequestBody EntregadorRequest request) {
 
         Entregador entregador = entregadorService.save(request.build());

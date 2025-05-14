@@ -18,7 +18,7 @@ public class ClienteRequest {
 
    private String nome;
 
-   @JsonFormat(pattern = "dd/MM/yyyy")
+   @JsonFormat(pattern = "dd/MM/yyyy") //Ele vai esperar a anotação em Dia/Mês/Ano
    private LocalDate dataNascimento;
 
    private String cpf;
