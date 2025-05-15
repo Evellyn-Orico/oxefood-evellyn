@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EntregadorRequest {
-
     private String nome;
     private String cpf;
     private String rg;
@@ -34,27 +33,27 @@ public class EntregadorRequest {
     private String enderecoCidade;
     private String enderecoCep;
     private String enderecoUf;
-    private boolean ativo;
+    private Boolean ativo;
 
     public Entregador build() {
+ 
+       return Entregador.builder() 
+           .nome(nome)
+           .cpf(cpf)
+           .rg(rg)
+           .dataNascimento(dataNascimento)
+           .foneCelular(foneCelular)
+           .foneFixo(foneFixo)
+           .qtdEntregasRealizadas(qtdEntregasRealizadas)
+           .valorFrete(valorFrete)
+           .enderecoRua(enderecoRua)
+           .enderecoComplemento(enderecoComplemento)
+           .enderecoNumero(enderecoNumero)
+           .enderecoBairro(enderecoBairro)
+           .enderecoCidade(enderecoCidade)
+           .enderecoCep(enderecoCep)
+           .enderecoUf(enderecoUf)
+           .build();
+   }
 
-        return Entregador.builder()
-                .nome(nome)
-                .cpf(cpf)
-                .rg(rg)
-                .dataNascimento(dataNascimento)
-                .foneCelular(foneCelular)
-                .foneFixo(foneFixo)
-                .qtdEntregasRealizadas(qtdEntregasRealizadas)
-                .valorFrete(valorFrete)
-                .enderecoRua(enderecoRua)
-                .enderecoComplemento(enderecoComplemento)
-                .enderecoNumero(enderecoNumero)
-                .enderecoBairro(enderecoBairro)
-                .enderecoCidade(enderecoCidade)
-                .enderecoCep(enderecoCep)
-                .enderecoUf(enderecoUf)
-                .ativo(ativo)
-                .build();
-    }
 }

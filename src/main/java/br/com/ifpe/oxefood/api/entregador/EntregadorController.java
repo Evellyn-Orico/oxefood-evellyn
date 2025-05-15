@@ -18,44 +18,43 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.ifpe.oxefood.modelo.entregador.Entregador;
 import br.com.ifpe.oxefood.modelo.entregador.EntregadorService;
 
-@RestController  //Faz a classe ser um controller
+@RestController //Faz a classe ser um controller
 @RequestMapping("/api/entregador")
-@CrossOrigin  //Utilizada para o controller receber requisições do React
-
+@CrossOrigin //Utilizada para o controller receber requisições do React
 public class EntregadorController {
+      @Autowired //Instanciar no cliente service
+   private EntregadorService entregadorService;
 
-    @Autowired
-    private EntregadorService entregadorService;
+   @PostMapping //Especificar que essa função vai receber requisições do tipo Post
+   public ResponseEntity<Entregador> save(@RequestBody EntregadorRequest request) {
 
-    @PostMapping  //Especificar que essa função vai receber requisições do tipo Post
-    public ResponseEntity<Entregador> save(@RequestBody EntregadorRequest request) {
+       Entregador entregador = entregadorService.save(request.build());
+       return new ResponseEntity<Entregador>(entregador, HttpStatus.CREATED);
+   }
 
-        Entregador entregador = entregadorService.save(request.build());
-        return new ResponseEntity<Entregador>(entregador, HttpStatus.CREATED);
-    }
-
-    @GetMapping
+  @GetMapping
     public List<Entregador> listarTodos() {
-        return entregadorService.listarTodos();  //consultar/listar todos os entregadores cadastrados (pelo postaman, Get)
+        return entregadorService.listarTodos();
     }
 
     @GetMapping("/{id}")
-    public Entregador obterPorID(@PathVariable Long id) {  //consultar/listar por id os entregadores cadastrados  (pelo postaman, Get)
+    public Entregador obterPorID(@PathVariable Long id) {
         return entregadorService.obterPorID(id);
     }
 
-    @PutMapping("/{id}")     // Implementando a Alteração (Cntroller.java e Service)
+    @PutMapping("/{id}")
     public ResponseEntity<Entregador> update(@PathVariable("id") Long id, @RequestBody EntregadorRequest request) {
 
-        entregadorService.update(id, request.build());
-        return ResponseEntity.ok().build();
+       entregadorService.update(id, request.build());
+       return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/{id}")         // deletar/remover 
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
 
-        entregadorService.delete(id);
-        return ResponseEntity.ok().build();
-    }
+       entregadorService.delete(id);
+       return ResponseEntity.ok().build();
+   }
+
 
 }

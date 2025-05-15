@@ -1,4 +1,4 @@
-package br.com.ifpe.oxefood.modelo.cliente;
+package br.com.ifpe.oxefood.modelo.cupomdesconto;
 
 import java.time.LocalDate;
 
@@ -15,28 +15,36 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Cliente")
-@SQLRestriction("habilitado = true") // acrescenta em todas as consultas uma clausula where: habilitado = true
+@Table(name = "CupomDesconto")
+@SQLRestriction("habilitado = true") 
 @Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Cliente extends EntidadeAuditavel  {
+public class CupomDesconto extends EntidadeAuditavel  {
+
 
    @Column
-   private String nome;
+   private String codigoDesconto;
 
    @Column
-   private LocalDate dataNascimento;
+   private Double percentualDesconto;
 
    @Column
-   private String cpf;
+   private Double valorDesconto;
 
    @Column
-   private String foneCelular;
+   private Double valorMinimoPedidoPermitido;
+   
+   @Column
+   private int quantidadeMaximaUso;
+   
+   @Column
+   private LocalDate inicioVigencia;
 
    @Column
-   private String foneFixo;
+   private LocalDate fimVigencia;
+
 
 }

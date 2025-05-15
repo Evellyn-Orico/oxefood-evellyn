@@ -1,6 +1,5 @@
 package br.com.ifpe.oxefood.modelo.entregador;
 
-
 import java.time.LocalDate;
 
 import org.hibernate.annotations.SQLRestriction;
@@ -18,60 +17,60 @@ import lombok.Setter;
 @Entity
 @Table(name = "Entregador")
 @SQLRestriction("habilitado = true")
-
 @Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Entregador extends EntidadeAuditavel {
+public class Entregador extends EntidadeAuditavel{
+    
+    @Column
+    private String nome;
 
-   @Column
-   private String nome;
+    @Column
+    private String cpf;
 
-   @Column
-   private String cpf;
+    @Column
+    private String rg;
 
-   @Column
-   private String rg;
+    @Column
+    private LocalDate dataNascimento;
 
-   @Column
-   private LocalDate dataNascimento;
+    @Column
+    private String foneCelular;
 
-   @Column
-   private String foneCelular;
+    @Column
+    private String foneFixo;
 
-   @Column
-   private String foneFixo;
+    @Column
+    private Integer qtdEntregasRealizadas;
 
-   @Column
-   private Integer qtdEntregasRealizadas;
-   
-   @Column
-   private Double valorFrete;
+    @Column
+    private Double valorFrete;
 
-   @Column
-   private String enderecoRua;
+    @Column
+    private String enderecoRua;
 
-   @Column
-   private String enderecoComplemento;
+    @Column
+    private String enderecoComplemento;
 
-   @Column
-   private String enderecoNumero;
+    @Column
+    private String enderecoNumero;
 
-   @Column
-   private String enderecoBairro;
+    @Column
+    private String enderecoBairro;
 
-   @Column
-   private String enderecoCidade;
+    @Column
+    private String enderecoCidade;
 
-   @Column
-   private String enderecoCep;
+    @Column
+    private String enderecoCep;
 
-   @Column
-   private String enderecoUf;
+    @Column
+    private String enderecoUf;
 
-   @Column
-   private Boolean ativo;
+    @Column
+    private Boolean ativo;
+
 
 }

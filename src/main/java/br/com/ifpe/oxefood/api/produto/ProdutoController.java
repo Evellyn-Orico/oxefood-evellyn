@@ -18,44 +18,44 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.ifpe.oxefood.modelo.produto.Produto;
 import br.com.ifpe.oxefood.modelo.produto.ProdutoService;
 
-@RestController
+
+@RestController //Faz a classe ser um controller
 @RequestMapping("/api/produto")
-@CrossOrigin
-
+@CrossOrigin //Utilizada para o controller receber requisições do React
 public class ProdutoController {
+       @Autowired //Instanciar no cliente service
+   private ProdutoService produtoService;
 
-    @Autowired
-    private ProdutoService produtoService;
+   @PostMapping //Especificar que essa função vai receber requisições do tipo Post
+   public ResponseEntity<Produto> save(@RequestBody ProdutoRequest request) {
 
-    @PostMapping
-    public ResponseEntity<Produto> save(@RequestBody ProdutoRequest request) {
+       Produto produto = produtoService.save(request.build());
+       return new ResponseEntity<Produto>(produto, HttpStatus.CREATED);
+   }
 
-        Produto produto = produtoService.save(request.build());
-        return new ResponseEntity<Produto>(produto, HttpStatus.CREATED);
-    }
-
-    @GetMapping
+  @GetMapping
     public List<Produto> listarTodos() {
-        return produtoService.listarTodos();  //consultar/listar todos os produtos cadastrados (pelo postaman, Get)
+        return produtoService.listarTodos();
     }
 
     @GetMapping("/{id}")
-    public Produto obterPorID(@PathVariable Long id) {  //consultar/listar por id os produtos cadastrados  (pelo postaman, Get)
+    public Produto obterPorID(@PathVariable Long id) {
         return produtoService.obterPorID(id);
     }
 
-    @PutMapping("/{id}")     // Implementando a Alteração (produtoCntroller.java e produtoService
+    @PutMapping("/{id}")
     public ResponseEntity<Produto> update(@PathVariable("id") Long id, @RequestBody ProdutoRequest request) {
 
-        produtoService.update(id, request.build());
-        return ResponseEntity.ok().build();
+       produtoService.update(id, request.build());
+       return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/{id}")         // deletar/remover 
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
 
-        produtoService.delete(id);
-        return ResponseEntity.ok().build();
-    }
+       produtoService.delete(id);
+       return ResponseEntity.ok().build();
+   }
+
 
 }
