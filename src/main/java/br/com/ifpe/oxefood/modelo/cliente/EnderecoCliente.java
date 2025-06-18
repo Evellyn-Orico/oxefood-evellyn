@@ -22,31 +22,31 @@ import jakarta.persistence.Table;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EnderecoCliente extends EntidadeAuditavel { // slide18 tudo
+public class EnderecoCliente extends EntidadeAuditavel {
 
-    @JsonIgnore
-    @ManyToOne
-    private Cliente cliente;
+    @Column(nullable = false, length = 150)
+    private String endereco;
 
-    @Column
-    private String rua;
-
-    @Column
+    @Column(nullable = false, length = 10)
     private String numero;
 
-    @Column
-    private String bairro;
-
-    @Column
-    private String cep;
-
-    @Column
-    private String cidade;
-
-    @Column
-    private String estado;
-
-    @Column
+    @Column(length = 30)
     private String complemento;
 
+    @Column(nullable = false, length = 60)
+    private String bairro;
+
+    @Column(nullable = false, length = 60)
+    private String cidade;
+
+    @Column(nullable = false, length = 2)
+    private String uf;
+
+    @Column(nullable = false, length = 9)
+    private String cep;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id", nullable = false)
+    @JsonBackReference
+    private Cliente cliente;
 }
